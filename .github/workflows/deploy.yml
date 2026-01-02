@@ -21,6 +21,10 @@ jobs:
         run: uv sync --dev
 
       - name: Run Tests
+        env:
+          BOT_TOKEN: "dummy_token" 
+          ADMIN_ID: "12345"
+          GROUP_CHAT_ID: "12345"
         run: uv run python -m pytest tests/
 
   deploy:
