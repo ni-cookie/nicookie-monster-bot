@@ -41,10 +41,16 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            mkdir -p /root/cookie_bot
-            cd /root/cookie_bot
+            mkdir -p ~/cookie_bot
+            cd ~/cookie_bot
 
-            git pull origin main || git clone https://github.com/ni-cookie/nicookie-monster-bot.git .
+            if [ -d ".git" ]; then
+              echo "🔄 Pulling updates..."
+              git pull origin main
+            else
+              echo "⬇️ Cloning repository..."
+              git clone https://github.com/ni-cookie/nicookie-monster-bot.git .
+            fi
             
             echo "${{ secrets.ENV_FILE }}" > .env
             
