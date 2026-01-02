@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+
+# Local data
+data/
+*.db
+
+# Media / uploads
+media/
+
+# Secrets / config
+.env
+.env.*
+
+# OS
+.DS_Store

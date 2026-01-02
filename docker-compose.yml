@@ -1,0 +1,12 @@
+services:
+  bot:
+    build: .
+    container_name: cookie_bot
+    restart: always
+    volumes:
+      - ./data:/app/data  # Сохраняем БД на диске сервера
+      - ./media:/app/media # Сохраняем медиа на диске сервера (если нужно)
+    env_file:
+      - .env
+    environment:
+      - TIMEZONE=Europe/Kyiv
