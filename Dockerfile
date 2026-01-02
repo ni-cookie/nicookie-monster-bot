@@ -1,4 +1,4 @@
-FROM python:3.13-slim AS builder
+FROM python:3.12-slim AS builder
 
 # Устанавливаем uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
@@ -12,7 +12,7 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-install-project
 
 # Этап 2: Финальный образ (максимально легкий)
-FROM python:3.13-slim
+FROM python:3.12-slim
 
 WORKDIR /app
 
